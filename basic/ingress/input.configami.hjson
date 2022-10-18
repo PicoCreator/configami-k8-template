@@ -102,5 +102,5 @@
 	// "ingressApiVersion": "extensions/v1beta1"
 
 	// Ingress class, this is only applicable to the newer api version
-	// "ingressClass" : "nginx"
+	"ingressClassName" : "nginx"
 }
