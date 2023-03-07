@@ -24,7 +24,6 @@ metadata:
     {{/if}}
 spec:
   {{#eq ingressApiVersion "extensions/v1beta1"}}
-  # extensions/v1beta1 - does not support `ingressClassName`
   {{else}}
   {{#if ingressClassName}}ingressClassName: {{ingressClassName}}{{/if}}
   {{/eq}}
@@ -36,7 +35,7 @@ spec:
       {{#json2yaml "ingressPath"}}{{/json2yaml}}
       {{else}}
       {{#eq ingressApiVersion "extensions/v1beta1"}}
-      - backend:ingressClass
+      - backend:
           serviceName: {{serviceName}}
           servicePort: {{servicePort}}
       {{else}}
