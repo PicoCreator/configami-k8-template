@@ -15,10 +15,13 @@
 	"image" : "picoded/hello-world",
 	"imagePullPolicy": "Always",
 
-	// Simple node affinity
+	// Simple node affinity / prefence
 	//-------------------------------------------
 	// "simpleNodeAffinity" : {
 	// 	"node":"true"
+	// },
+	// "simplePreferredNode" : {
+	// 	"core":"true"
 	// },
 
 	// Workload scale count
@@ -114,7 +117,7 @@
 	// kubernetes 1.19 and above only
 	//-------------------------------------------
 	"containerTopologySpread" : {
-		// "enable": false,
+		"enable": true,
 		"zoneTopology" : "spread",
 		"hostTopology" : "spread"
 	},

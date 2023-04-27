@@ -51,6 +51,7 @@ spec:
       affinity:
         {{#if _hasNodeAffinity}}
         nodeAffinity:
+          {{#if _hasRequiredNode}}
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             {{#if simpleNodeAffinity}}
@@ -65,6 +66,24 @@ spec:
             {{#if customNodeAffinity}}
             {{#json2yaml "customNodeAffinity"}}{{/json2yaml}}
             {{/if}}
+          {{/if}}
+          {{#if _hasPrefferedNode}}
+          preferredDuringSchedulingIgnoredDuringExecution:
+          {{#if simplePreferredNode}}
+          {{#each simplePreferredNode}}
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: "{{@key}}"
+                operator: In
+                values:
+                - "{{this}}"
+          {{/each}}
+          {{/if}}
+          {{#if customPreferredNode}}
+          {{#json2yaml "customPreferredNode"}}{{/json2yaml}}
+          {{/if}}
+          {{/if}}
         {{/if}}
         {{#if _hasPodAffinity}}
         podAffinity:

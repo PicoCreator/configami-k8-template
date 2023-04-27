@@ -19,6 +19,9 @@
 	// "simpleNodeAffinity" : {
 	// 	"node":"true"
 	// },
+	// "simplePreferredNode" : {
+	// 	"node":"true"
+	// },
 
 	// Resource request / limits
 	//-------------------------------------------
